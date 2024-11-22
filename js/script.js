@@ -5,19 +5,42 @@ const map = L.map('map').setView([50.72825092034062, 1.6105813421016573], 8);
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// Selection la liste puis les différentes données dedans
+//Pour remplir la liste à gauche en fonction de la data
+const personList = document.getElementById('list-promo');
+
+// Stockage des marqueurs pour interagir avec la liste
+const markers = [];
+
+
+// Selectionne la data, lit les données, créer la liste avec boutons sur le côté, et les cercle.
 document.querySelectorAll('#data li').forEach(item => {
-        const lat = parseFloat(item.getAttribute('data-lat'));
-        const lng = parseFloat(item.getAttribute('data-lng'));
-        const photo = item.getAttribute('data-photo');
-        const nom = item.getAttribute('data-nom');
-        const lieunai = item.getAttribute('data-lieunai');
-        const hobbies = item.getAttribute('data-hobbies'); 
+  const lat = parseFloat(item.getAttribute('data-lat'));
+  const lng = parseFloat(item.getAttribute('data-lng'));
+  const photo = item.getAttribute('data-photo');
+  const nom = item.getAttribute('data-nom');
+  const lieunai = item.getAttribute('data-lieunai');
+  const hobbies = item.getAttribute('data-hobbies'); 
 
-        //Appel de la fonction (en dessous)
-        createCircle(lat, lng, photo, nom, lieunai, hobbies);
+  //Appel de la fonction (en dessous)
+  createCircle(lat, lng, photo, nom, lieunai, hobbies);
+
+  //
+  const marker = createCircle(lat, lng, photo, nom, lieunai, hobbies);
+  markers.push({ marker, lat, lng });
+
+  // Création d'un bouton dans la liste des personne
+  const listItem = document.createElement('li');
+  listItem.innerHTML = ` <img src="${photo}" alt="${nom}" /> <span>${nom}</span>`;
+
+  // zoom sur le cercle concerne et ouvre le pop-up
+  listItem.addEventListener('click', () => {
+    map.setView([lat, lng], 15);
+    marker.openPopup(); 
+  });
+
+  // Remplit la liste à gauche
+  personList.appendChild(listItem);
 });
-
 
 // Fonction pour créer un cercle avec le pop-up contenant la card
 function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
@@ -59,6 +82,7 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     `;
   
     // Ajout du cercle avec photo et du pop-up card
-    L.marker([lat, lng], { icon: customIcon }).addTo(map).bindPopup(cardPerso, { className: 'custom-popup' });
+    return L.marker([lat, lng], { icon: customIcon }).addTo(map).bindPopup(cardPerso, { className: 'custom-popup' });
+    
   }
   
