@@ -12,6 +12,7 @@ const personList = document.getElementById('list-promo');
 const markers = [];
 
 
+// FONCTION PRINCIPALE
 // Selectionne la data, lit les données, créer la liste avec boutons sur le côté, et les cercle.
 document.querySelectorAll('#data li').forEach(item => {
   const lat = parseFloat(item.getAttribute('data-lat'));
@@ -34,14 +35,17 @@ document.querySelectorAll('#data li').forEach(item => {
 
   // zoom sur le cercle concerne et ouvre le pop-up
   listItem.addEventListener('click', () => {
-    map.setView([lat, lng], 15);
-    marker.openPopup(); 
+    transitMap([lat, lng], marker);
+
   });
 
   // Remplit la liste à gauche
   personList.appendChild(listItem);
 });
 
+
+
+// SOUS-FONCTION : CREATECIRCLE
 // Fonction pour créer un cercle avec le pop-up contenant la card
 function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     // Pour mettre une photo au centre d'un cercle
@@ -55,7 +59,7 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
                     height: 50px; 
                     border-radius: 50%; 
                     overflow: hidden; 
-                    border: 2px solid red;">
+                    border: 2px solid #590902;">
 
           <img src="${photo}" alt="${nom}" style="
               width: 100%; 
@@ -86,3 +90,22 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     
   }
   
+
+// SOUS-FONCTION : TRANSITMAP
+//Permet une transition douce quand on clique sur un bouton.
+function transitMap(position, marker) {
+  const minZoom = 10;
+  const finalZoom = 15;
+  
+  //Si popup ouvert : le ferme
+  map.closePopup();
+
+  // Dezoomer
+  map.flyTo(map.getCenter(), minZoom, { duration: 1.5 }); 
+
+  // Rezoomer, recentrer
+  setTimeout(() => {
+    map.flyTo(position, finalZoom, { duration: 1.5 });
+      setTimeout(() => { marker.openPopup(); }, 1500); 
+    }, 1500); 
+}
