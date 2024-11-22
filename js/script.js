@@ -8,6 +8,9 @@ const map = L.map('map').setView([50.72825092034062, 1.6105813421016573], 8);
 //Pour remplir la liste à gauche en fonction de la data
 const personList = document.getElementById('list-promo');
 
+//Pour la barre de recherche et afficher dynamiquement les personnes affichées
+const searchBar = document.getElementById('recherche');
+
 // Stockage des marqueurs pour interagir avec la liste
 const markers = [];
 
@@ -43,6 +46,21 @@ document.querySelectorAll('#data li').forEach(item => {
   personList.appendChild(listItem);
 });
 
+
+// Barre de recherche dynamique
+searchBar.addEventListener('input', () => {
+  const searchTerm = searchBar.value.toLowerCase(); // Texte de recherche en minuscule
+
+  // Parcours des éléments de la liste
+  document.querySelectorAll('#list-promo li').forEach(listItem => {
+    const itemName = listItem.querySelector('span').textContent.toLowerCase(); // Récupère le nom de l'élément
+    if (itemName.includes(searchTerm)) {
+      listItem.classList.remove('hidden'); // Retire la classe 'hidden' pour afficher
+    } else {
+      listItem.classList.add('hidden'); // Ajoute la classe 'hidden' pour masquer
+    }
+  });
+});
 
 
 // SOUS-FONCTION : CREATECIRCLE
