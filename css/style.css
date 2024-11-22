@@ -147,6 +147,53 @@ footer {
 
 
 /*Liste gauche*/
+
+#sidebar {
+    min-height: 300px;
+    max-height: 600px;
+    width: 300px;
+}
+
+#recherche {
+    border-radius: 5px;
+    margin: 10px;
+    width: 90%;
+}
+
+#sidebar h1 {
+    font-size: 30px;
+    display: flex;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
+}
+
+#list-promo {
+    overflow-y: auto;
+    height: 80%;
+}
+
+#list-promo li {
+    display: flex; /* Toujours afficher en flex pour les transitions */
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 1s ease, height 1s ease, margin 1s ease, padding 1s ease; /* Transition fluide */
+    opacity: 1; /* Entièrement visible par défaut */
+    height: auto; /* Ajuste automatiquement à son contenu */
+    overflow: hidden; /* Cache les débordements pour la transition */
+}
+
+#list-promo li.hidden {
+    opacity: 0; /* Rendu invisible */
+    height: 0; /* Réduit la hauteur à 0 */
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime le remplissage */
+    border: none; /* Supprime la bordure */
+}
+
 #list-promo li:hover {
     background-color: #eaeaea;
 }
