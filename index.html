@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css ">
-    <title>Document</title>
+    <title>Trombi - LT / JL</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
-
 <body>
-    <div class="id-card">
+    
+    <header>
+        
+    </header>
+
+
+    <main>
+
+        <!--LA MAP-->
+        <div id="map" style="width: 600px; height: 400px; position: relative; outline-style: none;"></div>
+      
+        <div class="id-card">
         <img src="image/imga.JPG" alt="Photo de Jonathan Louvet">
         <h1>Jonathan Louvet</h1>
         <div class="info">
@@ -19,6 +32,43 @@
             <p>Wimille</p>
         </div>
     </div>
-</body>
 
+    </main>
+
+
+    <footer>
+
+    </footer>
+
+    <!--Liste de données. N'apparait pas sur la page. Pas besoin de faire du css dessus.-->
+    <ul id="data" style="display: none;">
+        <!--Leo-->
+        <li data-lat="50.67253588442852" 
+        data-lng="1.653316900337607" 
+        data-photo="img/Leo.jpg" 
+        data-nom="Leo" 
+        data-lieunai="Isques" 
+        data-hobbies="Jeu video, JDR, Japon, Cuisine"></li>
+
+        <!--Jonathan-->
+        <li data-lat="50.69042299962065" 
+        data-lng="1.6249605411889074" 
+        data-photo="img/Jonathan.jpg" 
+        data-nom="Jonathan" 
+        data-lieunai="Boulogne" 
+        data-hobbies="Lecture, Voyage"></li>
+
+        <!--Adrien-->
+        <li data-lat="50.72511027425282" 
+        data-lng="1.608351545659862" 
+        data-photo="img/Adrien.jpg" 
+        data-nom="Adrien" 
+        data-lieunai="Paris" 
+        data-hobbies="Jeu et piscine"></li>
+    </ul>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/script-tailwind.js"></script>
+</body>
 </html>
