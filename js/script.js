@@ -59,6 +59,6 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     `;
   
     // Ajout du cercle avec photo et du pop-up card
-    L.marker([lat, lng], { icon: customIcon }).addTo(map).bindPopup(cardPerso);
+    L.marker([lat, lng], { icon: customIcon }).addTo(map).bindPopup(cardPerso, { className: 'custom-popup' });
   }
   
