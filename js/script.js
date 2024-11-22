@@ -48,9 +48,13 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     const cardPerso = `
       <div class="id-card">
         <img src="${photo}" alt="${nom}" />
-        <h3>${nom}</h3>
-        <p><b>Lieu de naissance :</b> ${lieunai}</p>
-        <p><b>Hobbies :</b> ${hobbies}</p>
+        <h1>${nom}</h1>
+        <div class="info">
+          <h2>Lieu de naissance :</h2> 
+          <p>${lieunai}</p>
+          <h2>Hobbies :</h2> 
+          <p>${hobbies}</p>
+        </div>
       </div>
     `;
   
