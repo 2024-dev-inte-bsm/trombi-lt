@@ -47,7 +47,7 @@ table {
 	border-spacing: 0;
 }
 
-/* css de card */
+/*MAIN*/
 body {
     display: flex;
     justify-content: center;
@@ -64,17 +64,29 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 20px;
 }
 
 header img {
-    width: 20%;
+    width: 40%;
+    min-width: 300px;
 }
 
 main {
     flex: 1;
 }
 
+footer {
+    background: linear-gradient(135deg, #260101, #590902);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    color: #f2c46d;
+}
+
+/*CSS DES CARD/POPPUP*/
 .id-card {
     display: flex;
     flex-direction: column;
@@ -87,19 +99,21 @@ main {
     text-align: center;
     padding: 20px;
     align-items: center;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
-.id-card:hover {
-    opacity: 10px;
-    transition: opacity 2s ease-in-out;
-}
+.id-card::-webkit-scrollbar {
+    display: none; 
+  }
 
-.id-card img {
+
+.img-card {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #260101;
+    border: 4px solid #d9843b;
 }
 
 .id-card h1 {
@@ -111,7 +125,6 @@ main {
 
 .id-card .info {
     text-align: center;
-    margin: 15px 0;
     text-align: left;
 }
 
@@ -126,18 +139,16 @@ main {
     text-align: center;
     font-weight: bold;
     color: #f2c46d;
+    text-decoration: underline;
 }
 
-footer {
-    background: linear-gradient(135deg, #260101, #590902);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    padding-bottom: 10px;
-    padding-top: 5px;
-    color: #f2c46d;
+.info a {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin : 10px auto 0px auto;
 }
+
 
 /*Permet le cardPerso de prendre toute la surface du pop-up*/
 .custom-popup .leaflet-popup-content-wrapper {
@@ -150,8 +161,7 @@ footer {
 }
 
 
-/*Liste gauche*/
-
+/*LISTE A GAUCHE*/
 #sidebar {
     min-height: 300px;
     max-height: 600px;
@@ -164,17 +174,10 @@ footer {
     width: 90%;
 }
 
-#sidebar h1 {
-    font-size: 30px;
-    display: flex;
-    height: 10%;
-    justify-content: center;
-    align-items: center;
-}
 
 #list-promo {
     overflow-y: auto;
-    height: 80%;
+    height: 90%;
 }
 
 #sidebar {
@@ -186,39 +189,32 @@ footer {
 
 #list-promo li {
     display: flex;
-    /* Toujours afficher en flex pour les transitions */
     align-items: center;
     padding: 10px;
     border: 1px solid #d9843b;
     border-radius: 5px;
     cursor: pointer;
     transition: opacity 1s ease, height 1s ease, margin 1s ease, padding 1s ease;
-    /* Transition fluide */
     opacity: 1;
-    /* Entièrement visible par défaut */
     height: auto;
-    /* Ajuste automatiquement à son contenu */
     overflow: hidden;
-    /* Cache les débordements pour la transition */
     background-color: #590902;
     color: #d9843b;
 }
 
+/*Fait completement disparaitre le marker non recherché*/
 #list-promo li.hidden {
     opacity: 0;
-    /* Rendu invisible */
     height: 0;
-    /* Réduit la hauteur à 0 */
     margin: 0;
-    /* Supprime les marges */
     padding: 0;
-    /* Supprime le remplissage */
     border: none;
-    /* Supprime la bordure */
 }
 
 #list-promo li:hover {
-    background-color: #eaeaea;
+    background-color: #d9843b;
+    color:#590902;
+    border: 1px solid #590902;
 }
 
 #list-promo img {
@@ -233,3 +229,14 @@ footer {
     font-size: 16px;
     font-weight: bold;
 }
+
+
+/*Modif de la scroll-bar*/
+#list-promo::-webkit-scrollbar {
+    width: 10px;
+}
+  
+#list-promo::-webkit-scrollbar-thumb {
+    background: #590902;
+    border-radius: 6px;
+  }
