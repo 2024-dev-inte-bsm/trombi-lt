@@ -1,5 +1,5 @@
 //Fonctionnement de la map
-const map = L.map('map').setView([50.72825092034062, 1.6105813421016573], 8);
+const map = L.map('map').setView([50.71006735720355, 1.9682706208002292], 10);
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -22,14 +22,15 @@ document.querySelectorAll('#data li').forEach(item => {
   const lng = parseFloat(item.getAttribute('data-lng'));
   const photo = item.getAttribute('data-photo');
   const nom = item.getAttribute('data-nom');
-  const lieunai = item.getAttribute('data-lieunai');
+  const age = item.getAttribute('data-age');
+  const ville = item.getAttribute('data-ville');
   const hobbies = item.getAttribute('data-hobbies'); 
-
-  //Appel de la fonction (en dessous)
-  createCircle(lat, lng, photo, nom, lieunai, hobbies);
+  const plat = item.getAttribute('data-plat');
+  const pays = item.getAttribute('data-pays');
+  const gith = item.getAttribute('data-git');
 
   //
-  const marker = createCircle(lat, lng, photo, nom, lieunai, hobbies);
+  const marker = createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith);
   markers.push({ marker, lat, lng });
 
   // Création d'un bouton dans la liste des personne
@@ -65,7 +66,7 @@ searchBar.addEventListener('input', () => {
 
 // SOUS-FONCTION : CREATECIRCLE
 // Fonction pour créer un cercle avec le pop-up contenant la card
-function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
+function createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith) {
     // Pour mettre une photo au centre d'un cercle
     const customIcon = L.divIcon({
       className: '',
@@ -78,7 +79,6 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
                     border-radius: 50%; 
                     overflow: hidden; 
                     border: 2px solid #590902;">
-
           <img src="${photo}" alt="${nom}" style="
               width: 100%; 
               height: 100%; 
@@ -92,17 +92,27 @@ function createCircle(lat, lng, photo, nom, lieunai, hobbies) {
     // fiche à afficher au clic
     const cardPerso = `
       <div class="id-card">
-        <img src="${photo}" alt="${nom}" />
+        <a class="but-nav" href="${photo}" target="_blank">
+        <img class="img-card" src="${photo}" alt="${nom}" />
+        </a>
         <h1>${nom}</h1>
         <div class="info">
-          <h2>Lieu de naissance :</h2> 
-          <p>${lieunai}</p>
+          <h2>Age :</h2> 
+          <p>${age}</p>
+          <h2>Ville :</h2> 
+          <p>${ville}</p>
           <h2>Hobbies :</h2> 
           <p>${hobbies}</p>
+          <h2>Plat Favoris :</h2> 
+          <p>${plat}</p>
+          <h2>Pays à visiter :</h2> 
+          <p>${pays}</p>
+          <a class="img-git" href="${gith}" target="_blank"><img src="../img/git.png" alt="Profil Git"></a>
         </div>
       </div>
     `;
-  
+
+
     // Ajout du cercle avec photo et du pop-up card
     return L.marker([lat, lng], { icon: customIcon }).addTo(map).bindPopup(cardPerso, { className: 'custom-popup' });
     
