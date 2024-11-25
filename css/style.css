@@ -166,6 +166,10 @@ footer {
     min-height: 300px;
     max-height: 600px;
     width: 300px;
+    background-color: #d9843b;
+    color: #590902;
+    border: 1px solid #590902;
+    border-radius: 5px;
 }
 
 #recherche {
@@ -178,14 +182,10 @@ footer {
 #list-promo {
     overflow-y: auto;
     height: 90%;
+    scrollbar-width: thin; 
+    scrollbar-color: #590902 #d9843b;
 }
 
-#sidebar {
-    background-color: #d9843b;
-    color: #590902;
-    border: 1px solid #590902;
-    border-radius: 5px;
-}
 
 #list-promo li {
     display: flex;
@@ -230,13 +230,12 @@ footer {
     font-weight: bold;
 }
 
+  /*telephone et autre */
 
-/*Modif de la scroll-bar*/
-#list-promo::-webkit-scrollbar {
-    width: 10px;
-}
+  @media (max-width:720px) {}
+
+  /* Tablette */
+
+  @media (min-width:720px) and (max-width: 1080px) {}
+
   
-#list-promo::-webkit-scrollbar-thumb {
-    background: #590902;
-    border-radius: 6px;
-  }
