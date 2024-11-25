@@ -54,17 +54,21 @@ body {
     align-items: center;
     flex-direction: column;
     min-height: 100vh;
+    background-image: url('../img/world.png');
+    background-size: cover;
 }
 
 header {
     background: linear-gradient(135deg, #590902, #260101);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 20px;
-    color: #f2c46d;
+}
+
+header img {
+    width: 20%;
 }
 
 main {
@@ -173,25 +177,44 @@ footer {
     height: 80%;
 }
 
+#sidebar {
+    background-color: #d9843b;
+    color: #590902;
+    border: 1px solid #590902;
+    border-radius: 5px;
+}
+
 #list-promo li {
-    display: flex; /* Toujours afficher en flex pour les transitions */
+    display: flex;
+    /* Toujours afficher en flex pour les transitions */
     align-items: center;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #d9843b;
     border-radius: 5px;
     cursor: pointer;
-    transition: opacity 1s ease, height 1s ease, margin 1s ease, padding 1s ease; /* Transition fluide */
-    opacity: 1; /* Entièrement visible par défaut */
-    height: auto; /* Ajuste automatiquement à son contenu */
-    overflow: hidden; /* Cache les débordements pour la transition */
+    transition: opacity 1s ease, height 1s ease, margin 1s ease, padding 1s ease;
+    /* Transition fluide */
+    opacity: 1;
+    /* Entièrement visible par défaut */
+    height: auto;
+    /* Ajuste automatiquement à son contenu */
+    overflow: hidden;
+    /* Cache les débordements pour la transition */
+    background-color: #590902;
+    color: #d9843b;
 }
 
 #list-promo li.hidden {
-    opacity: 0; /* Rendu invisible */
-    height: 0; /* Réduit la hauteur à 0 */
-    margin: 0; /* Supprime les marges */
-    padding: 0; /* Supprime le remplissage */
-    border: none; /* Supprime la bordure */
+    opacity: 0;
+    /* Rendu invisible */
+    height: 0;
+    /* Réduit la hauteur à 0 */
+    margin: 0;
+    /* Supprime les marges */
+    padding: 0;
+    /* Supprime le remplissage */
+    border: none;
+    /* Supprime la bordure */
 }
 
 #list-promo li:hover {
