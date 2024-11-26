@@ -73,6 +73,21 @@ header img {
 
 main {
     flex: 1;
+    width: 100%;
+    display: flex;
+}
+
+#container-main {
+    width: 80%;
+    height: 70vh;
+    display: flex;
+    margin: auto;
+}
+
+#map {
+    width: 80%;
+    position: relative;
+    outline-style: none;
 }
 
 footer {
@@ -163,9 +178,7 @@ footer {
 
 /*LISTE A GAUCHE*/
 #sidebar {
-    min-height: 300px;
-    max-height: 600px;
-    width: 300px;
+    width: 20%;
     background-color: #d9843b;
     color: #590902;
     border: 1px solid #590902;
@@ -232,10 +245,29 @@ footer {
 
   /*telephone et autre */
 
-  @media (max-width:720px) {}
+  @media (max-width:720px) {
+    #container-main {
+        flex-direction: column-reverse;
+    }
+    #map {
+        width: 100%;
+        height: 70%;
+    }
+    #sidebar {
+        width: 100%;
+        height: 30%;
+    }
+  }
 
   /* Tablette */
 
-  @media (min-width:720px) and (max-width: 1080px) {}
+  @media (min-width:720px) and (max-width: 1080px) {
+    #map {
+        width: 70%;
+    }
+    #sidebar {
+        width: 30%;
+    }
+  }
 
   
