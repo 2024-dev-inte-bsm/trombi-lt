@@ -109,8 +109,8 @@ function createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, git
           <h2>Pays à visiter :</h2> 
           <p>${pays}</p>
           <div class="container-imgcard" style="display:flex;">
-          <a class="img-git" href="${gith}" target="_blank"><img src="../img/git.png" alt="Profil Git"></a>
-          <a class="img-link" href="${likd}" target="_blank"><img src="../img/likd.png" alt="Profil Linkedin"></a>
+          <a class="img-git" href="${gith}" target="_blank"><img src="./img/git.png" alt="Profil Git"></a>
+          <a class="img-link" href="${likd}" target="_blank"><img src="./img/likd.png" alt="Profil Linkedin"></a>
           <div>
         </div>
       </div>
