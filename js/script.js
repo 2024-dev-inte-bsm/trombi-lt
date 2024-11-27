@@ -28,9 +28,10 @@ document.querySelectorAll('#data li').forEach(item => {
   const plat = item.getAttribute('data-plat');
   const pays = item.getAttribute('data-pays');
   const gith = item.getAttribute('data-git');
+  const likd = item.getAttribute('data-likd');
 
   //
-  const marker = createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith);
+  const marker = createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith, likd);
   markers.push({ marker, lat, lng });
 
   // Création d'un bouton dans la liste des personne
@@ -66,7 +67,7 @@ searchBar.addEventListener('input', () => {
 
 // SOUS-FONCTION : CREATECIRCLE
 // Fonction pour créer un cercle avec le pop-up contenant la card
-function createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith) {
+function createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, gith, likd) {
     // Pour mettre une photo au centre d'un cercle
     const customIcon = L.divIcon({
       className: '',
@@ -107,7 +108,10 @@ function createCircle(lat, lng, photo, nom, age, ville, hobbies, plat, pays, git
           <p>${plat}</p>
           <h2>Pays à visiter :</h2> 
           <p>${pays}</p>
+          <div class="container-imgcard" style="display:flex;">
           <a class="img-git" href="${gith}" target="_blank"><img src="../img/git.png" alt="Profil Git"></a>
+          <a class="img-link" href="${likd}" target="_blank"><img src="../img/likd.png" alt="Profil Linkedin"></a>
+          <div>
         </div>
       </div>
     `;
